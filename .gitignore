@@ -1,0 +1,30 @@
+# Copyrighted inputs and anything derived from them — never commit
+/roms/
+/bios/
+/tools/
+/build/
+/captures/
+/deploy/
+*.zip
+*.7z
+*.dat
+*.chd
+*.gdi
+*.cdi
+*.iso
+*.bytes
+track*.bin
+track*.raw
+
+# disc art inputs (branded/ROM-derived)
+/0GDTEX.*
+*.pvr
+/iplogo.mr
+
+# local noise
+.DS_Store
+._*
+.idea/
+.venv/
+.superpowers/
+__pycache__/
