@@ -25,7 +25,8 @@ Fortune Plus and Senko no Ronde Special ports.
     `assessments/ausfache.md`. Also the `.dat` toolset (`tools/dat-extract/`).
   - `../flycast4naomi2dreamcast` — the instrumented Flycast fork.
   - `../senkosp2dreamcast` — the most recent, complete port: the
-    implementation to copy (dual-backend GD driver, controls layer,
+    implementation the port kit (`../naomi-dc-port-kit`, sub-project 2)
+    is extracted from (dual-backend GD driver, controls layer,
     pre-game settings menu, GDI + CDI mastering).
   - `../cleopatra` — the first port (cfp2dreamcast): KB and method lineage.
 
