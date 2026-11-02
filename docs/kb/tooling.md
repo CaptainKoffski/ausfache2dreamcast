@@ -64,4 +64,21 @@ in `../senkosp2dreamcast/docs/kb/tooling.md` are referenced, not duplicated.
 
 ### ausfache.dat
 
-(Filled by Task 3.)
+Extracted 2026-11-02 (romset md5 `b54bd62d3c5024da23cfef211a304f61`, see `game.md` §Our dump):
+
+```bash
+mkdir -p roms && cp ../naomi2dreamcast/naomi/ausfache.zip roms/ausfache.zip
+cd ../naomi2dreamcast/tools/dat-extract
+NAOMI_ROMS=/Users/captainkoffski/AntigravityProjects/flycast4naomi2dreamcast/core/hw/naomi/naomi_roms.cpp python3 cart2dat.py ausfache
+cd /Users/captainkoffski/AntigravityProjects/ausfache2dreamcast
+cp ../naomi2dreamcast/tools/dat-extract/out/ausfache.dat ausfache.dat
+python3 ../cleopatra/scripts/parse_header.py ausfache.dat
+```
+
+Tool output, verbatim:
+
+```
+OK  ausfache  M4 assembled+decrypted  134217728 bytes  hdr@0x0  title='AKATSUKI BK AUSF. ACHSE' -> /Users/captainkoffski/AntigravityProjects/naomi2dreamcast/tools/dat-extract/out/ausfache.dat
+```
+
+`ausfache.dat`: 134,217,728 bytes (2 x 0x4000000, the two flash blobs at `naomi_roms.cpp:4580-4581`), md5 `97467a0eb4d875da272743d797bcd8de`. Gitignored (`.gitignore:10 *.dat`), as is `roms/` (`.gitignore:2`).
