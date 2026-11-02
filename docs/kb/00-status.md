@@ -41,7 +41,7 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 - [ ] KB skeleton (00-status, game, tooling, img/)
 - [ ] tooling.md — Flycast build provenance, dat-extract, BIOS, reuse pointers
 - [ ] ausfache.dat extracted (cart2dat, M4 assemble + m4dec), header verified vs assessment
-- [ ] Boot verification: untouched romset reaches title + demo, headless, screenshots in KB (THE GATE)
+- [x] Boot verification: untouched romset reaches title + demo, headless, screenshots in KB (THE GATE)
 - [ ] Flat-image control test (`ausfache.dat` boots as a plain cartridge?) — result recorded either way
 - [ ] Exit audit + fresh-agent test
 
@@ -53,6 +53,7 @@ from a disc via a custom loader. Charter + Phase 1 spec:
   (capture v9, 2026-08-09, fork `f014a410c`).
 - Boots and reaches live demo gameplay under the fork (assessment §3:
   handoff 20 s, trigger `pio`, demo by 609 s).
+- Boot verification 2026-11-02: untouched romset reaches title (~60 s) and live demo (~340-400 s, again ~620 s and ~800-840 s) headless in fork build `5a67c8d87` — `docs/kb/img/ausfache-{title,demo}.png`; leg `captures/phase1/boot.log` (18502793 lines, 457 CARTDMA, 5 CARTPIO; ARAMHANDOFF + VRAMHANDOFF `trigger=pio` at log line 10951-10952, seen by t+40 s). Title frame is from that leg (t+62 s); its t+602 s grab landed on a mid-attract stage intro, not a fight, so the demo frame is from a second headless leg `captures/phase1/boot.regrab.log` (26985634 lines, 690 CARTDMA, 5 CARTPIO; 31 grabs t+300..900 s, live fights at t+340/360/380/400/620/800/820/840 s; the committed frame is t+360 s). Attract loop phase differs between legs, so the demo is a loop, not a fixed-time event.
 - Memory (assessment §4): main write-truth 8.0 MB, address peak 15.6 MB
   (0.975× 16 MiB, under the line, ~420 KB headroom at the top); VRAM
   content 4.4 MB, address peak 7.9 MB (0.941×); ARAM content 1.56 MB.
