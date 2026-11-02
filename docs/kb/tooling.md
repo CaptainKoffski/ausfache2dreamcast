@@ -11,15 +11,20 @@ in `../senkosp2dreamcast/docs/kb/tooling.md` are referenced, not duplicated.
   Provenance: at Phase 1 start the tree was `4a7e80240` + two uncommitted
   logging-only changes (`FLYCAST_WRWATCH`, `BLOCKEDEXC`) that the binary
   includes by mtime (binary 19:16:05 is newer than `addrspace.cpp` 19:16:03
-  and `sh4_interrupts.cpp` 18:17:58); committed locally 2026-11-02 as
+  and `sh4_interrupts.cpp` 18:17:58) and by content (`grep -a -c
+  FLYCAST_WRWATCH` = 1, `grep -a -c BLOCKEDEXC` = 1 in the binary); committed locally 2026-11-02 as
   `5a67c8d87` (35 insertions, 0 deletions; no push).
 - **Source of truth:** `../flycast4naomi2dreamcast`. Build recipe (submodules,
   Syphon patch, cmake flags): `../senkosp2dreamcast/docs/kb/tooling.md`
-  §Decoupling (2026-09-21). Not rebuilt in Phase 1.
+  §Decoupling (2026-09-21). Not rebuilt in Phase 1. Caveat before any
+  rebuild: the fork's Syphon submodule is clean and `4a7e80240` moved the
+  Syphon fix into the top-level CMake, so that recipe's step
+  `git -C core/deps/Syphon apply …` may no longer apply to this tree —
+  verify first.
 - **Headless (always):** `FLYCAST_HEADLESS=1` — hidden SDL window, background
   app that never activates, null audio; `FLYCAST_SHOT`/`_RAWFB` and the
   cartlog still work (fork commit `a54f70116`; `INSTRUMENTATION.md`
-  §Headless screenshots; sources `core/sdl/sdl.cpp:841-843,965-975`,
+  §9 "Seeing the screen without asking the OS: FLYCAST_SHOT"; sources `core/sdl/sdl.cpp:841-843,965-975`,
   `core/audio/audiostream.cpp:70-74`). The binary contains the knob
   (`grep -a -c FLYCAST_HEADLESS` = 1; plain `grep -c` prints nothing on this
   binary, use `-a`).
@@ -29,6 +34,8 @@ in `../senkosp2dreamcast/docs/kb/tooling.md` are referenced, not duplicated.
 - **Launch line (every leg in this repo):**
   `defaults write com.flyinghead.Flycast ApplePersistenceIgnoreState -bool YES`
   once per session, then
+  `FLYCAST_BIN=/Users/captainkoffski/AntigravityProjects/flycast4naomi2dreamcast/build/Flycast.app/Contents/MacOS/Flycast`
+  and
   `FLYCAST_HEADLESS=1 FLYCAST_CARTLOG=<abs log> FLYCAST_SHOT=<abs png> FLYCAST_SHOT_EVERY=3600 "$FLYCAST_BIN" -config config:rend.vsync=no -config config:pvr.rend=0 <abs rom> > <abs stdout log> 2>&1 & echo $! > <pidfile>`.
   Absolute paths only. `pvr.rend=0` pins OpenGL (a leftover Vulkan setting
   segfaults this bundle — senkosp `test_vmu_save.sh`). Stop by PID, never by
@@ -39,6 +46,9 @@ in `../senkosp2dreamcast/docs/kb/tooling.md` are referenced, not duplicated.
   reading. `FLYCAST_CARTLOG` lines start with an uppercase tag;
   `ARAMHANDOFF`/`VRAMHANDOFF` mark the BIOS→game handoff, `CARTDMA`/`CARTPIO`
   the cart reads (`INSTRUMENTATION.md` §3).
+- **Capture disk budget:** ~580 MB of cartlog per 10-min Naomi leg (845 MB
+  for 15 min), plus a 32 MiB `<cartlog>.ram.bin` per leg (the RNDREG probe's
+  one-shot RAM dump at render 1500, `INSTRUMENTATION.md` §14).
 
 ### dat-extract (../naomi2dreamcast/tools/dat-extract)
 

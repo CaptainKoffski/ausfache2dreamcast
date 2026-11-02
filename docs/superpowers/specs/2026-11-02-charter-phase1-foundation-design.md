@@ -151,7 +151,7 @@ point; Phase 2 re-measures.
 - **The emulator always runs headless** (`FLYCAST_HEADLESS=1`, fork commit
   `a54f70116`: hidden SDL window, background app that never activates,
   null audio; `FLYCAST_SHOT`/`_RAWFB` dumps and the cartlog still work,
-  `INSTRUMENTATION.md` §Headless screenshots). Never a visible window or
+  `INSTRUMENTATION.md` §9 "Seeing the screen without asking the OS: FLYCAST_SHOT"). Never a visible window or
   sound unless the user asks for one. Recorded in `CLAUDE.md` (user
   instruction 2026-11-02).
 - All findings land in `docs/kb/`; a lesson that generalizes is proposed
