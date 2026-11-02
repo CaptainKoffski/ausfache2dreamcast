@@ -1,6 +1,6 @@
 # Project status
 
-**Updated:** 2026-11-02 (Phase 1 Foundation — in progress)
+**Updated:** 2026-11-02 (Phase 1 Foundation — DONE; gate green)
 
 ## What this is
 
@@ -29,7 +29,7 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 
 ## Phases
 
-1. **Foundation — IN PROGRESS** (KB, tooling records, `.dat`, boot verification)
+1. **Foundation — DONE 2026-11-02** (KB, tooling records, `.dat`, boot verification)
 2. Instrumented analysis (streaming/input/memory truth; the M4 questions) — after the kit
 3. Reverse engineering (touchpoint addresses + patch plan)
 4. Conversion (loader + shim + patch table → bootable GDI, on the kit)
@@ -38,12 +38,12 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 
 ## Phase 1 checklist
 
-- [ ] KB skeleton (00-status, game, tooling, img/)
-- [ ] tooling.md — Flycast build provenance, dat-extract, BIOS, reuse pointers
-- [ ] ausfache.dat extracted (cart2dat, M4 assemble + m4dec), header verified vs assessment
+- [x] KB skeleton (00-status, game, tooling, img/)
+- [x] tooling.md — Flycast build provenance, dat-extract, BIOS, reuse pointers
+- [x] ausfache.dat extracted (cart2dat, M4 assemble + m4dec), header verified vs assessment
 - [x] Boot verification: untouched romset reaches title + demo, headless, screenshots in KB (THE GATE)
 - [x] Flat-image control test (`ausfache.dat` boots as a plain cartridge?) — result recorded either way
-- [ ] Exit audit + fresh-agent test
+- [x] Exit audit + fresh-agent test
 
 ## Key facts so far
 
@@ -68,4 +68,8 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 
 ## Next step
 
-Finish Phase 1 per `docs/superpowers/plans/2026-11-02-phase1-foundation.md`.
+Sub-project 2: the port kit. Brainstorm + spec in the new repo
+`../naomi-dc-port-kit` (charter §Decomposition: extract senkosp's
+game-agnostic core; gate = senkosp rebuilt against the kit byte-identical
++ `make test` green). Phase 2 (instrumented analysis: the M4 questions,
+real-play legs, top-of-RAM headroom) starts when the kit has shipped.

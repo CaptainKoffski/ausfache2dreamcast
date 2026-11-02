@@ -5,8 +5,7 @@ Port of the Sega Naomi **M4 cartridge** game *Akatsuki Blitzkampf Ausf. Achse*
 conversion (no source code), following the method proven by the Cleopatra
 Fortune Plus and Senko no Ronde Special ports.
 
-- **Start here:** `REQUIREMENTS.md` (project brief); once Phase 1 creates it,
-  `docs/kb/00-status.md` — project state, strategy, next step.
+- **Start here:** `docs/kb/00-status.md` — project state, strategy, next step; `REQUIREMENTS.md` is the origin brief.
 - **Method:** `../naomi2dreamcast/docs/kb/port-playbook.md` — the port
   playbook, maintained in the umbrella repo (gates enforced, spec + plan per
   phase, Definition of done); `docs/kb/port-playbook.md` here is just the
