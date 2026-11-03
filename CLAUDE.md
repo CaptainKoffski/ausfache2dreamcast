@@ -28,7 +28,7 @@ Fortune Plus and Senko no Ronde Special ports.
     is extracted from (dual-backend GD driver, controls layer,
     pre-game settings menu, GDI + CDI mastering).
   - `../naomi-dc-port-kit` — the port kit, shipped 2026-11-03 (tag
-    `v0.1.0` after the final review): consumed as a git submodule at
+    `v0.1.0`): consumed as a git submodule at
     `kit/`; the contract (what a port supplies) is its `README.md`.
   - `../cleopatra` — the first port (cfp2dreamcast): KB and method lineage.
 

@@ -20,8 +20,8 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 - Sub-project order (charter §Decomposition): **Phase 1 → port kit
   (new repo `../naomi-dc-port-kit`, extracted from senkosp, byte-identical
   senkosp rebuild as its gate) → Phases 2–6 on the kit.** The kit shipped
-  2026-11-03 (tag `v0.1.0` on kit `extraction` → `main` after the final
-  review; contract in its `README.md`): Phase 2 may start.
+  2026-11-03 (tag `v0.1.0` = kit `main` `d42e228`; senkosp `main` merged at
+  `098b8ef`; contract in its `README.md`): Phase 2 may start.
 - Emulator always headless (`FLYCAST_HEADLESS=1`, `CLAUDE.md`).
 - Tester-run hardware legs: burned CD-R on a stock console and the
   arcade-stick matrix are executed by the operator's testers (rig has
@@ -77,6 +77,6 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 Sub-project 2, the port kit: DONE 2026-11-03. `../naomi-dc-port-kit`
 holds senkosp's game-agnostic core; gate green: senkosp rebuilt against the
 kit is byte-identical to its `afab584` baseline, also from a fresh clone from
-GitHub, and both `make test` pass (kit `docs/kb/00-status.md`). Tag `v0.1.0`
-follows the final review. Phase 2 (instrumented analysis: the M4 questions,
+GitHub, and both `make test` pass (kit `docs/kb/00-status.md`). Tagged `v0.1.0`
+(kit `d42e228`) after the final review; senkosp `main` merged (`098b8ef`). Phase 2 (instrumented analysis: the M4 questions,
 real-play legs, top-of-RAM headroom) may start.
