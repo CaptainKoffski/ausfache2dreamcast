@@ -1,6 +1,6 @@
 # Project status
 
-**Updated:** 2026-11-02 (Phase 1 Foundation — DONE; gate green; Phase 2 additionally waits for the kit)
+**Updated:** 2026-11-03 (kit shipped; Phase 1 Foundation — DONE; Phase 2 may start)
 
 ## What this is
 
@@ -17,10 +17,11 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 - Target: real Dreamcast hardware. The emulator is a dev tool, never the
   verdict. Definition of done = the playbook's four items + VMU tripwires
   (`../naomi2dreamcast/docs/kb/port-playbook.md`).
-- Sub-project order (charter §Decomposition): **Phase 1 (now) → port kit
+- Sub-project order (charter §Decomposition): **Phase 1 → port kit
   (new repo `../naomi-dc-port-kit`, extracted from senkosp, byte-identical
-  senkosp rebuild as its gate) → Phases 2–6 on the kit.** Phase 2 waits
-  for the kit.
+  senkosp rebuild as its gate) → Phases 2–6 on the kit.** The kit shipped
+  2026-11-03 (tag `v0.1.0` on kit `extraction` → `main` after the final
+  review; contract in its `README.md`): Phase 2 may start.
 - Emulator always headless (`FLYCAST_HEADLESS=1`, `CLAUDE.md`).
 - Tester-run hardware legs: burned CD-R on a stock console and the
   arcade-stick matrix are executed by the operator's testers (rig has
@@ -30,9 +31,9 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 ## Phases
 
 1. **Foundation — DONE 2026-11-02** (KB, tooling records, `.dat`, boot verification)
-2. Instrumented analysis (streaming/input/memory truth; the M4 questions) — after the kit
+2. Instrumented analysis (streaming/input/memory truth; the M4 questions) — next; the kit has shipped
 3. Reverse engineering (touchpoint addresses + patch plan)
-4. Conversion (loader + shim + patch table → bootable GDI, on the kit)
+4. Conversion (loader + shim + patch table → bootable GDI, on the kit: `../naomi-dc-port-kit` as a submodule at `kit/`, `v0.1.0`)
 5. Real-hardware testing & fit (operator + tester legs)
 6. Safety tripwires & release
 
@@ -73,8 +74,9 @@ from a disc via a custom loader. Charter + Phase 1 spec:
 
 ## Next step
 
-Sub-project 2: the port kit. Brainstorm + spec in the new repo
-`../naomi-dc-port-kit` (charter §Decomposition: extract senkosp's
-game-agnostic core; gate = senkosp rebuilt against the kit byte-identical
-+ `make test` green). Phase 2 (instrumented analysis: the M4 questions,
-real-play legs, top-of-RAM headroom) starts when the kit has shipped.
+Sub-project 2, the port kit: DONE 2026-11-03. `../naomi-dc-port-kit`
+holds senkosp's game-agnostic core; gate green: senkosp rebuilt against the
+kit is byte-identical to its `afab584` baseline, also from a fresh clone from
+GitHub, and both `make test` pass (kit `docs/kb/00-status.md`). Tag `v0.1.0`
+follows the final review. Phase 2 (instrumented analysis: the M4 questions,
+real-play legs, top-of-RAM headroom) may start.
